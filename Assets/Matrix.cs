@@ -44,9 +44,9 @@ public class Matrix<T> : IEnumerable<T>
 	{
         Matrix<T> aux = new Matrix<T>(Width, Height);
 
-        for (int y = 0; y < _width; y++)
+        for (int y = 0; y < _height; y++)
         {
-	        for (int x = 0; x < _height; x++)
+	        for (int x = 0; x < _width; x++)
 	        {
 		        aux[x, y] = this[x, y];
 	        }

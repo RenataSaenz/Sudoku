@@ -178,7 +178,9 @@ public class Sudoku : MonoBehaviour {
     void SolvedSudoku()
     {
         StopAllCoroutines();
+        
         nums = new List<int>();
+        
         var solution = new List<Matrix<int>>();
         watchdog = 100000;
         var result =RecuSolve(_createdMatrix, 0, 0, watchdog, solution);
@@ -196,29 +198,21 @@ public class Sudoku : MonoBehaviour {
 	    StopAllCoroutines();
 	    nums = new List<int>();
 	    canPlayMusic = false;
+	    
         ClearBoard();
+
         List<Matrix<int>> l = new List<Matrix<int>>();
         watchdog = 100000;
-        GenerateValidLine(_createdMatrix, 0, 0);
-        var result =RecuSolve(_createdMatrix, 0, 0, watchdog, l);
 
-      
-        for (int y = 0; y < _createdMatrix.Height; y++)
-        {
-	        for (int x = 0; x < _createdMatrix.Width; x++)
-	        {
-		        _createdMatrix[x, y] = l.Last()[x, y];
-		        Debug.Log(_createdMatrix[x, y]);
-	        }
-        }
+        GenerateValidLine(_createdMatrix, 0, 0);
+        
+        var result =RecuSolve(_createdMatrix, 0, 0, watchdog, l);
+        
+        _createdMatrix= l.Last().Clone();
         
         LockRandomCells(); 
         ClearUnlocked(_createdMatrix);
-        
         TranslateAllValues(_createdMatrix);
-        
-    
-        //TranslateAllValues(_createdMatrix);
         
         long mem = System.GC.GetTotalMemory(true);
         memory = string.Format("MEM: {0:f2}MB", mem / (1024f * 1024f));
