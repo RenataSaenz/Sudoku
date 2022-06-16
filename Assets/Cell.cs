@@ -51,7 +51,7 @@ public class Cell : MonoBehaviour {
 		if(_invalid)
 			_image.color = Color.red;
 		else if(_locked)
-			_image.color = Color.blue;	//_image.color = new Color(0.75f, 0.75f, 0.75f);
+			_image.color= new Color(0.7069241f, 0.7280851f, 0.8867924f); //_image.color = new Color(0.75f, 0.75f, 0.75f);
 		else
 			_image.color = Color.white;
 	}
