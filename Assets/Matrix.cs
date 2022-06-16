@@ -23,10 +23,21 @@ public class Matrix<T> : IEnumerable<T>
 
 	public Matrix(T[,] copyFrom)
     {
+	    //IMPLEMENTAR: crea una version de Matrix a partir de una matriz básica de C#
 	    
-        //IMPLEMENTAR: crea una version de Matrix a partir de una matriz básica de C#
-        
-        _matrix = copyFrom;
+	    _width = copyFrom.GetLength(0);
+	    _height = copyFrom.GetLength(1);
+	    _capacity = copyFrom.Length;
+	    
+	    _matrix = new T[_width,_height];
+	    
+	    for (int y = 0; y < _height; y++)
+	    {
+		    for (int x = 0; x < _width; x++)
+		    {
+			    this[x, y] = copyFrom[x, y];
+		    }
+	    }
     }
 
 	public Matrix<T> Clone() 

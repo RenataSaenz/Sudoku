@@ -42,6 +42,7 @@ public class Cell : MonoBehaviour {
 		get { return _locked; }
 		set {
 			_locked = value;
+			Debug.Log("locked");
 			RefreshColor();
 		}
 	}
@@ -50,7 +51,7 @@ public class Cell : MonoBehaviour {
 		if(_invalid)
 			_image.color = Color.red;
 		else if(_locked)
-			_image.color = new Color(0.75f, 0.75f, 0.75f);
+			_image.color = Color.blue;	//_image.color = new Color(0.75f, 0.75f, 0.75f);
 		else
 			_image.color = Color.white;
 	}
