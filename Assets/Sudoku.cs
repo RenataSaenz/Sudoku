@@ -11,10 +11,11 @@ public class Sudoku : MonoBehaviour {
 	[SerializeField] float _stepDuration = 0.01f;
 	[SerializeField,Range(1, 82)]public int _difficulty = 40;
 	[SerializeField,Range(3, 10)]public int _numberOfSections = 3;	//nuevo numero de secciones
-
+	
 	Matrix<Cell> _board;
 	Matrix<int> _createdMatrix;
    // List<int> _posibles = new List<int>();
+   int watchdog = 0;
 	int _totalSide;
     string _memory = "";
     string _canSolve = "";
@@ -27,6 +28,7 @@ public class Sudoku : MonoBehaviour {
     float _increment;
     float _phase;
     float _samplingF = 48000;
+    
 
 
     void Start()
@@ -79,7 +81,7 @@ public class Sudoku : MonoBehaviour {
 
 
 	//IMPLEMENTAR
-	int watchdog = 0;
+	
 	bool RecuSolve(Matrix<int> matrixParent, int x, int y, int protectMaxDepth, List<Matrix<int>> solution)
     {
 	    if (y >= matrixParent.Height) return true; //termina matrix
